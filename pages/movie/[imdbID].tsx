@@ -56,6 +56,8 @@ function name({ movieDetails }: Props) {
 
   const HQPoster = Poster.replace("300", "");
   const { data } = usePalette(HQPoster);
+  const thereIs = (thing: string) => thing !== "N/A";
+
   return (
     <>
       <Head>
@@ -69,49 +71,72 @@ function name({ movieDetails }: Props) {
               <Subtitle color={data.lightVibrant!}>{Year}</Subtitle>
             </StyledTitle>
             <InformationList>
-              <InformationItem title="runtime" color={data.lightVibrant!}>
-                {Runtime}
-              </InformationItem>
-              <InformationItem title="imdb rating" color={data.lightVibrant!}>
-                {imdbRating}
-              </InformationItem>
-              <InformationItem title="rating" color={data.lightVibrant!}>
-                {Rated}
-              </InformationItem>
-              <InformationItem title="type" color={data.lightVibrant!}>
-                {Type}
-              </InformationItem>
+              {thereIs(Runtime) && (
+                <InformationItem title="runtime" color={data.lightVibrant!}>
+                  {Runtime}
+                </InformationItem>
+              )}
+              {thereIs(imdbRating) && (
+                <InformationItem title="imdb rating" color={data.lightVibrant!}>
+                  {imdbRating}
+                </InformationItem>
+              )}
+              {thereIs(Rated) && (
+                <InformationItem title="rating" color={data.lightVibrant!}>
+                  {Rated}
+                </InformationItem>
+              )}
+              {thereIs(Type) && (
+                <InformationItem title="type" color={data.lightVibrant!}>
+                  {Type}
+                </InformationItem>
+              )}
             </InformationList>
           </HeadingSection>
         </PImage>
         {/* TODO: looks fine on tablet/phone, looks odd when stretched to desktop */}
         <BodyWrapper>
-          <StyledPlot color={data.lightMuted!}>{Plot}</StyledPlot>
+          {thereIs(Plot) && (
+            <StyledPlot color={data.lightMuted!}>{Plot}</StyledPlot>
+          )}
           <DetailsWrappers>
-            <div>
-              <ExtraDetail color={data.lightVibrant!}>Director: </ExtraDetail>
-              <ExtraDetail color={data.lightMuted!}>{Director}</ExtraDetail>
-            </div>
-            <div>
-              <ExtraDetail color={data.lightVibrant!}>
-                Writer{Writer.split(",").length > 1 ? "s" : ""}:{" "}
-              </ExtraDetail>
-              <ExtraDetail color={data.lightMuted!}>{Writer}</ExtraDetail>
-            </div>
-            <div>
-              <ExtraDetail color={data.lightVibrant!}>Actors: </ExtraDetail>
-              <ExtraDetail color={data.lightMuted!}>{Actors}</ExtraDetail>
-            </div>
-            <div>
-              <ExtraDetail color={data.lightVibrant!}> Released: </ExtraDetail>
-              <ExtraDetail color={data.lightMuted!}>{Released}</ExtraDetail>
-            </div>
-            <div>
-              <ExtraDetail color={data.lightVibrant!}>
-                Genre{Genre.split(",").length > 1 ? "s" : ""}{" "}
-              </ExtraDetail>
-              <ExtraDetail color={data.lightMuted!}>{Genre}</ExtraDetail>
-            </div>
+            {thereIs(Director) && (
+              <div>
+                <ExtraDetail color={data.lightVibrant!}>Director: </ExtraDetail>
+                <ExtraDetail color={data.lightMuted!}>{Director}</ExtraDetail>
+              </div>
+            )}
+            {thereIs(Writer) && (
+              <div>
+                <ExtraDetail color={data.lightVibrant!}>
+                  Writer{Writer.split(",").length > 1 ? "s" : ""}:{" "}
+                </ExtraDetail>
+                <ExtraDetail color={data.lightMuted!}>{Writer}</ExtraDetail>
+              </div>
+            )}
+            {thereIs(Actors) && (
+              <div>
+                <ExtraDetail color={data.lightVibrant!}>Actors: </ExtraDetail>
+                <ExtraDetail color={data.lightMuted!}>{Actors}</ExtraDetail>
+              </div>
+            )}
+            {thereIs(Released) && (
+              <div>
+                <ExtraDetail color={data.lightVibrant!}>
+                  {" "}
+                  Released:{" "}
+                </ExtraDetail>
+                <ExtraDetail color={data.lightMuted!}>{Released}</ExtraDetail>
+              </div>
+            )}
+            {thereIs(Genre) && (
+              <div>
+                <ExtraDetail color={data.lightVibrant!}>
+                  Genre{Genre.split(",").length > 1 ? "s" : ""}{" "}
+                </ExtraDetail>
+                <ExtraDetail color={data.lightMuted!}>{Genre}</ExtraDetail>
+              </div>
+            )}
           </DetailsWrappers>
         </BodyWrapper>
       </MovieCard>

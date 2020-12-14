@@ -50,6 +50,7 @@ const MovieCard: React.FC<{ data: MovieBySearch }> = ({
 }) => {
   const HQPoster = Poster.replace("300", "");
   const { data } = usePalette(HQPoster);
+  const theresAnImage = Poster !== "N/A";
   return (
     <Card style={{ background: data.darkMuted }}>
       <header>
@@ -59,7 +60,7 @@ const MovieCard: React.FC<{ data: MovieBySearch }> = ({
         <Subtitle style={{ color: data.lightMuted }}>{Year}</Subtitle>
       </header>
       <StyledPoster
-        src={Poster === "N/A" ? "./noImage.png" : HQPoster}
+        src={theresAnImage ? HQPoster : "/noImage.png"}
         alt={Title}
       />
       {/* {Type} */}
