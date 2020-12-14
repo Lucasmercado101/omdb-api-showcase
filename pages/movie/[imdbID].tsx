@@ -15,7 +15,7 @@ import {
   BodyWrapper,
   DetailsWrappers
 } from "./styles";
-import { relative } from "path";
+import styled from "styled-components";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -27,8 +27,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const imdbID = params!.imdbID as string;
   const data = await searchMovieDetail(imdbID);
+  const thereIsData = "Title" in data;
+
+  if (!thereIsData) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false
+      }
+    };
+  }
+
   return {
-    props: { movieDetails: data }
+    props: { movieDetails: thereIsData ? data : null }
   };
 };
 
@@ -36,8 +47,16 @@ type Props = {
   movieDetails: MovieDetails;
 };
 
+const Placeholder = styled.p`
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 3rem;
+`;
+
 function name({ movieDetails }: Props) {
-  if (!movieDetails) return null;
+  if (!movieDetails) return <Placeholder>Fetching Movie Data</Placeholder>;
   const {
     Actors,
     Director,
