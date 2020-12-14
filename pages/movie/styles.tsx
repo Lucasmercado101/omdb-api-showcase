@@ -139,10 +139,12 @@ export const ExtraDetail = styled.small<ColorProps>`
 export const DetailsWrappers = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 70ch;
   * + * {
     margin-top: 5px;
   }
   @media (max-width: ${largeBreakPoint}px) {
+    max-width: 700ch;
     * + * {
       margin-top: 0px;
     }
