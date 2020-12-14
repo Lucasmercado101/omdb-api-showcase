@@ -48,7 +48,7 @@ const StyledPoster = styled.img`
 const MovieCard: React.FC<{ data: MovieBySearch }> = ({
   data: { Poster, Title, Year, imdbID }
 }) => {
-  const HQPoster = Poster.replace("300", "");
+  const HQPoster = Poster.replace("300", "900");
   const { data } = usePalette(HQPoster);
   const theresAnImage = Poster !== "N/A";
   return (

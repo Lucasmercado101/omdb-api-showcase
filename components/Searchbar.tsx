@@ -38,6 +38,7 @@ function Searchbar() {
       }}
     >
       <StyledInput
+        required
         type="text"
         name="movieName"
         id=" movieName"
