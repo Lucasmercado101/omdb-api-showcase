@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import { searchMovies } from "../../utils/api";
 import { GetStaticProps, GetStaticPaths } from "next";

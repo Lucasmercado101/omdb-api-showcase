@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import Searchbar from "../components/Searchbar";
 import styled from "styled-components";

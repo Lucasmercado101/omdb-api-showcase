@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { usePalette } from "react-palette";
 import Link from "next/link";
