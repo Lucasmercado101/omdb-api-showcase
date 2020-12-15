@@ -16,6 +16,7 @@ import {
   DetailsWrappers
 } from "./styles";
 import styled from "styled-components";
+import SearchBar from "../../components/Searchbar";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -84,6 +85,24 @@ function name({ movieDetails }: Props) {
       </Head>
       <MovieCard color={data.darkMuted!}>
         <PImage img={HQPoster} color={data.darkMuted!}>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "end",
+              alignItems: "baseline"
+            }}
+          >
+            <div
+              style={{
+                background: "rgba(255,255,255,0.8)",
+                padding: "10px",
+                borderRadius: "15px"
+              }}
+            >
+              <SearchBar />
+            </div>
+          </div>
           <HeadingSection>
             <StyledTitle color={data.lightMuted!}>
               {Title}

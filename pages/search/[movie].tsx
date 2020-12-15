@@ -3,6 +3,7 @@ import { searchMovies } from "../../utils/api";
 import { GetStaticProps, GetStaticPaths } from "next";
 import MovieCard from "../../components/MovieCard";
 import styled from "styled-components";
+import SearchBar from "../../components/Searchbar";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -37,6 +38,9 @@ export default function Home({ movies }: Props) {
         <title>OMDB Api App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div style={{ width: "100%", display: "grid", placeItems: "center" }}>
+        <SearchBar />
+      </div>
       {movies.Search && (
         <Grid>
           {Search.map((movie) => {
