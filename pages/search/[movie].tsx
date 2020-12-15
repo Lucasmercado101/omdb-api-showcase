@@ -41,12 +41,14 @@ export default function Home({ movies }: Props) {
       <div style={{ width: "100%", display: "grid", placeItems: "center" }}>
         <SearchBar />
       </div>
-      {movies.Search && (
+      {movies.Search ? (
         <Grid>
           {Search.map((movie) => {
             return <MovieCard key={movie.imdbID} data={movie}></MovieCard>;
           })}
         </Grid>
+      ) : (
+        <h1 style={{ textAlign: "center", marginTop: 50 }}> No movies found</h1>
       )}
     </div>
   );
