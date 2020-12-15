@@ -2,6 +2,8 @@ I made this to learn [Next.js](https://nextjs.org/)
 
 It needs the enviroment variable `OMDB_API_KEY` to be the API key from [OMDB Api](https://www.omdbapi.com/)
 
+site: https://omdb-api-showcase.vercel.app/
+
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
