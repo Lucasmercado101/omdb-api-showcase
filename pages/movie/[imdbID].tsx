@@ -15,7 +15,7 @@ import {
   Subtitle,
   BodyWrapper,
   DetailsWrappers
-} from "./styles";
+} from "../../styles/movieDetailsStyles";
 import styled from "styled-components";
 import SearchBar from "../../components/Searchbar";
 
